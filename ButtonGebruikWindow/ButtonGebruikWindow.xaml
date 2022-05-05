@@ -1,0 +1,16 @@
+﻿<Window x:Class="ButtonGebruik.ButtonGebruikWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="ButtonGebruik" Height="350" Width="525">
+    <StackPanel>
+        <Label BorderBrush="Black" BorderThickness="2" Name="LabelTekst"
+               Height="50">Dit is de tekstblok die we gaan manipuleren</Label>
+        <StackPanel Orientation="Horizontal">
+            <ToggleButton Margin="10" Name="ButtonBold">Bold</ToggleButton>
+            <ToggleButton Margin="10" Name="ButtonItalic">Italic</ToggleButton>
+        </StackPanel>
+    </StackPanel>
+</Window>

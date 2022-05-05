@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TekstVerwerken
+namespace ButtonGebruikWindow
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for ButtonGebruikWindow.xaml
     /// </summary>
-    public partial class TextWindow : Window
+    public partial class ButtonGebruikWindow : Window
     {
-        public TextWindow()
+        public ButtonGebruikWindow()
         {
             InitializeComponent();
         }
