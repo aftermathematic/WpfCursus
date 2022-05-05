@@ -69,5 +69,8 @@
                     VerticalAlignment="Top" Margin="10" Content="Verwijderen" Click="ButtonVerwijderen_Click">
             </Button>
         </StackPanel>
+
+        <Button Name="ButtonSamenvatting" Margin="10" Click="ButtonSamenvatting_Click">Samenvatting</Button>
+
     </StackPanel>
 </Window>

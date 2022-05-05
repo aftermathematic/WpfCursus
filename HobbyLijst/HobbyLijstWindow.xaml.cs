@@ -23,7 +23,8 @@ public partial class HobbyLijstWindow : Window
     {
         hobbies.Add(new Hobby("sport", "voetbal", new BitmapImage(new Uri(@"images\voetbal.jpg", UriKind.Relative))));
         hobbies.Add(new Hobby("sport", "atletiek", new BitmapImage(new Uri(@"images\atletiek.jpg", UriKind.Relative))));
-        hobbies.Add(new Hobby("sport", "basketbal", new BitmapImage(new Uri(@"images\basketbal.jpg", UriKind.Relative))));
+        hobbies.Add(
+            new Hobby("sport", "basketbal", new BitmapImage(new Uri(@"images\basketbal.jpg", UriKind.Relative))));
         hobbies.Add(new Hobby("sport", "tennis", new BitmapImage(new Uri(@"images\tennis.jpg", UriKind.Relative))));
         hobbies.Add(new Hobby("sport", "turnen", new BitmapImage(new Uri(@"images\turnen.jpg", UriKind.Relative))));
         hobbies.Add(new Hobby("muziek", "trompet", new BitmapImage(new Uri(@"images\trompet.jpg", UriKind.Relative))));
@@ -56,12 +57,12 @@ public partial class HobbyLijstWindow : Window
     {
         if (ListBoxHobbies.SelectedItem != null)
         {
-            Hobby gekozenHobby = (Hobby)ListBoxHobbies.SelectedItem;
+            Hobby gekozenHobby = (Hobby) ListBoxHobbies.SelectedItem;
             //ListBoxGekozen.Items.Add(gekozenHobby.Categorie + " : " +
             //gekozenHobby.Activiteit);
-            ListBoxGekozen.Items.Add(gekozenHobby); 
+            ListBoxGekozen.Items.Add(gekozenHobby);
             ListBoxGekozen.Items.SortDescriptions.Add(
-            new SortDescription("Categorie", ListSortDirection.Ascending));
+                new SortDescription("Categorie", ListSortDirection.Ascending));
             ListBoxGekozen.Items.SortDescriptions.Add(
                 new SortDescription("Activiteit", ListSortDirection.Ascending));
         }
@@ -71,5 +72,39 @@ public partial class HobbyLijstWindow : Window
     {
         if (ListBoxGekozen.SelectedIndex >= 0)
             ListBoxGekozen.Items.RemoveAt(ListBoxGekozen.SelectedIndex);
+    }
+
+    private void ButtonSamenvatting_Click(object sender, RoutedEventArgs e)
+    {
+        if (MessageBox.Show("Wil je de gekozen hobby’s op een rijtje?",
+                "Samenvatting", MessageBoxButton.YesNo,
+                MessageBoxImage.Question, MessageBoxResult.No) == MessageBoxResult.Yes)
+        {
+            string mijnTekst = "Mijn hobby’s zijn: ";
+            string cat = string.Empty;
+            foreach (Object item in ListBoxGekozen.Items)
+            {
+                Hobby mijnHobby = (Hobby) item;
+                if (cat != mijnHobby.Categorie)
+                {
+                    cat = mijnHobby.Categorie;
+                    mijnTekst += "\n" + mijnHobby.Categorie + " : " +
+                                 mijnHobby.Activiteit;
+                }
+                else
+                {
+                    mijnTekst += ", " + mijnHobby.Activiteit;
+                }
+            }
+
+            if (ListBoxGekozen.Items.Count == 0)
+                MessageBox.Show("Ik heb geen hobby’s", "Samenvatting",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            else
+            {
+                MessageBox.Show(mijnTekst, "Samenvatting", MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+            }
+        }
     }
 }
