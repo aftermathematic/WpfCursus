@@ -1,8 +1,12 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using Microsoft.Win32;
 
 namespace Bars;
 
@@ -13,6 +17,9 @@ public partial class BarWindow : Window
 {
     public static RoutedCommand mijnRouteCtrlB = new();
     public static RoutedCommand mijnRouteCtrlI = new();
+    private readonly double A4breedte = 21 / 2.54 * 96;
+    private readonly double A4hoogte = 29.7 / 2.54 * 96;
+    private double vertPositie;
 
     public BarWindow()
     {
@@ -88,34 +95,155 @@ public partial class BarWindow : Window
         Vet_Aan_Uit();
     }
 
-    private void Schuin_Aan_Uit()
+    private void OpenExecuted(object sender, ExecutedRoutedEventArgs e)
     {
-        if (TextBoxVoorbeeld.FontStyle == FontStyles.Normal)
+        try
+        {
+            var dlg = new OpenFileDialog();
+            dlg.FileName = "Document";
+            dlg.DefaultExt = ".txt";
+            dlg.Filter = "Text documents |*.txt";
+            if (dlg.ShowDialog() == true)
+
+            {
+                using (var bestand = new StreamReader(dlg.FileName))
+                {
+                    LettertypeComboBox.SelectedValue =
+                        new FontFamily(bestand.ReadLine());
+                    var convertBold =
+                        TypeDescriptor.GetConverter(typeof(FontWeight));
+                    TextBoxVoorbeeld.FontWeight =
+                        (FontWeight) convertBold.ConvertFromString(bestand.ReadLine());
+                    Vet_Aan_Uit(true);
+                    var convertStyle =
+                        TypeDescriptor.GetConverter(typeof(FontStyle));
+                    TextBoxVoorbeeld.FontStyle =
+                        (FontStyle) convertStyle.ConvertFromString(bestand.ReadLine());
+                    Schuin_Aan_Uit(true);
+                    TextBoxVoorbeeld.Text = bestand.ReadLine();
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("openen mislukt : " + ex.Message);
+        }
+    }
+
+    private void PrintExecuted(object sender, ExecutedRoutedEventArgs e)
+    {
+        PrintDialog afdrukken = new PrintDialog();
+        if (afdrukken.ShowDialog() == true)
+        {
+            afdrukken.PrintDocument(StelAfdrukSamen().DocumentPaginator,
+                "tekstbox");
+        }
+    }
+
+    private TextBlock Regel(string tekst)
+    {
+        var deRegel = new TextBlock();
+        deRegel.Text = tekst;
+        deRegel.FontSize = TextBoxVoorbeeld.FontSize;
+        deRegel.FontFamily = TextBoxVoorbeeld.FontFamily;
+        deRegel.FontWeight = TextBoxVoorbeeld.FontWeight;
+        deRegel.FontStyle = TextBoxVoorbeeld.FontStyle;
+        deRegel.Margin = new Thickness(96, vertPositie, 96, 96);
+        vertPositie += 30;
+        return deRegel;
+    }
+
+    private void SaveExecuted(object sender, ExecutedRoutedEventArgs e)
+    {
+        try
+        {
+            var dlg = new SaveFileDialog();
+            dlg.FileName = "Document";
+            dlg.DefaultExt = ".txt";
+            dlg.Filter = "Text documents |*.txt";
+            if (dlg.ShowDialog() == true)
+            {
+                using (var bestand = new StreamWriter(dlg.FileName))
+                {
+                    bestand.WriteLine(LettertypeComboBox.SelectedValue);
+                    bestand.WriteLine(TextBoxVoorbeeld.FontWeight.ToString());
+                    bestand.WriteLine(TextBoxVoorbeeld.FontStyle.ToString());
+
+                    bestand.WriteLine(TextBoxVoorbeeld.Text);
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("opslaan mislukt: " + ex.Message);
+        }
+    }
+
+    private void Schuin_Aan_Uit(bool wissel = false)
+    {
+        if (wissel
+            && TextBoxVoorbeeld.FontStyle == FontStyles.Italic
+            || wissel == false
+            && TextBoxVoorbeeld.FontStyle == FontStyles.Normal)
         {
             TextBoxVoorbeeld.FontStyle = FontStyles.Italic;
             MenuSchuin.IsChecked = true;
             ButtonSchuin.IsChecked = true;
+            StatusSchuin.FontStyle = FontStyles.Italic;
         }
         else
         {
             TextBoxVoorbeeld.FontStyle = FontStyles.Normal;
             MenuSchuin.IsChecked = false;
             ButtonSchuin.IsChecked = false;
+            StatusSchuin.FontStyle = FontStyles.Normal;
         }
     }
 
-    private void Vet_Aan_Uit()
+    private FixedDocument StelAfdrukSamen()
     {
-        if (TextBoxVoorbeeld.FontWeight == FontWeights.Normal)
+        var document = new FixedDocument();
+        document.DocumentPaginator.PageSize = new Size(A4breedte, A4hoogte);
+        var inhoud = new PageContent();
+        document.Pages.Add(inhoud);
+        var page = new FixedPage();
+        inhoud.Child = page;
+        page.Width = A4breedte;
+        page.Height = A4hoogte;
+        vertPositie = 96;
+        page.Children.Add(Regel("gebruikt lettertype : " +
+                                TextBoxVoorbeeld.FontFamily));
+        page.Children.Add(Regel("gewicht van het lettertype : " +
+                                TextBoxVoorbeeld.FontWeight));
+        page.Children.Add(Regel("stijl van het lettertype : " +
+                                TextBoxVoorbeeld.FontStyle));
+        page.Children.Add(Regel(""));
+        page.Children.Add(Regel("inhoud van de tekstbox : "));
+        for (var i = 0; i < TextBoxVoorbeeld.LineCount; i++)
+        {
+            page.Children.Add(Regel(TextBoxVoorbeeld.GetLineText(i)));
+        }
+
+        return document;
+    }
+
+    private void Vet_Aan_Uit(bool wissel = false)
+    {
+        if (wissel
+            && TextBoxVoorbeeld.FontWeight == FontWeights.Bold
+            || wissel == false
+            && TextBoxVoorbeeld.FontWeight == FontWeights.Normal)
         {
             TextBoxVoorbeeld.FontWeight = FontWeights.Bold;
             MenuVet.IsChecked = true;
+            StatusVet.FontWeight = FontWeights.Bold;
             ButtonVet.IsChecked = true;
         }
         else
         {
             TextBoxVoorbeeld.FontWeight = FontWeights.Normal;
             MenuVet.IsChecked = false;
+            StatusVet.FontWeight = FontWeights.Normal;
             ButtonVet.IsChecked = false;
         }
     }
@@ -124,5 +252,28 @@ public partial class BarWindow : Window
     {
         LettertypeComboBox.Items.SortDescriptions.Add(new SortDescription("Source", ListSortDirection.Ascending));
         LettertypeComboBox.SelectedItem = new FontFamily(TextBoxVoorbeeld.FontFamily.ToString());
+    }
+
+    private void PreviewExecuted(object sender, ExecutedRoutedEventArgs e)
+    {
+        Afdrukvoorbeeld preview = new();
+        preview.Owner = this;
+        preview.AfdrukDocument = StelAfdrukSamen();
+        preview.ShowDialog();
+    }
+
+    private void Window_Closing(object sender, CancelEventArgs e)
+    {
+        if (MessageBox.Show("Programma afsluiten ?",
+                "Afsluiten",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question,
+                MessageBoxResult.No) == MessageBoxResult.No)
+            e.Cancel = true;
+    }
+
+    private void CloseExecuted(object sender, ExecutedRoutedEventArgs e)
+    {
+        Close();
     }
 }

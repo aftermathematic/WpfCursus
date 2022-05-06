@@ -5,9 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Bars"
         mc:Ignorable="d"
-        Title="Werken met Bars" Height="350" Width="525" Loaded="Window_Loaded">
+        Title="Werken met Bars" Height="350" Width="525" Loaded="Window_Loaded" Closing="Window_Closing">
     <DockPanel>
         <Menu Height="24" Name="MenuBalk" DockPanel.Dock="Top">
+
+            <MenuItem Header="_Bestand">
+                <MenuItem Header="Openen" Command="Open"></MenuItem>
+                <MenuItem Header="Opslaan" Command="Save"></MenuItem>
+                <MenuItem Header="Afdrukvoorbeeld" Command="PrintPreview"></MenuItem>
+                <MenuItem Header="Afdrukken..." Command="Print"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Afsluiten" Command="Close"></MenuItem>
+            </MenuItem>
 
             <MenuItem Header="Editeren">
                 <MenuItem Header="Knippen" Command="Cut"></MenuItem>
@@ -38,57 +47,95 @@
             </MenuItem>
 
             <ToolBarTray DockPanel.Dock="Top">
-                <ToolBar Name="EditeerBalk">
-                    <Button Command="Cut">
-                        <Image Source="images/cut.png"></Image>
-                    </Button>
-                    <Button Command="Copy">
-                        <Image Source="images/copy.png"></Image>
-                    </Button>
-                    <Button Command="Paste">
-                        <Image Source="images/paste.png"></Image>
-                    </Button>
-                </ToolBar>
-                <ToolBar Name="LettertypeBalk">
-                    <ToggleButton Name="ButtonVet" Click="MenuVet_Click">
-                        <Image Source="images/bold.png"></Image>
-                    </ToggleButton>
-                    <ToggleButton Name="ButtonSchuin" Click="MenuSchuin_Click">
-                        <Image Source="images/italic.png"></Image>
-                    </ToggleButton>
-                    <ComboBox Name="LettertypeComboBox" Width="150"
-                              ItemsSource="{Binding Source={x:Static Member=Fonts.SystemFontFamilies}}"
-                              SelectionChanged="LettertypeComboBox_SelectionChanged">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock FontFamily="{Binding}" Text="{Binding}" />
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
-                    </ComboBox>
-                </ToolBar>
+
+
             </ToolBarTray>
 
         </Menu>
 
-        <ToolBarTray Height="24" DockPanel.Dock="Top"></ToolBarTray>
+        <ToolBarTray Height="24" DockPanel.Dock="Top">
+            <ToolBar Name="BestandBalk">
+                <Button Command="Close">
+                    <Image Source="images/afsluiten.png"></Image>
+                </Button>
+                <Button Command="Open">
+                    <Image Source="images/open.png"></Image>
+                </Button>
+                <Button Command="Save">
+                    <Image Source="images/save.png"></Image>
+                </Button>
+                <Button Command="PrintPreview">
+                    <Image Source="images/preview.png"></Image>
+                </Button>
+                <Button Command="Print">
+                    <Image Source="images/print.png"></Image>
+                </Button>
+            </ToolBar>
+
+            <ToolBar Name="EditeerBalk">
+                <Button Command="Cut">
+                    <Image Source="images/cut.png"></Image>
+                </Button>
+                <Button Command="Copy">
+                    <Image Source="images/copy.png"></Image>
+                </Button>
+                <Button Command="Paste">
+                    <Image Source="images/paste.png"></Image>
+                </Button>
+            </ToolBar>
+
+            <ToolBar Name="LettertypeBalk">
+                <ToggleButton Name="ButtonVet" Click="MenuVet_Click">
+                    <Image Source="images/bold.png"></Image>
+                </ToggleButton>
+                <ToggleButton Name="ButtonSchuin" Click="MenuSchuin_Click">
+                    <Image Source="images/italic.png"></Image>
+                </ToggleButton>
+                <ComboBox Name="LettertypeComboBox" Width="150"
+                          ItemsSource="{Binding Source={x:Static Member=Fonts.SystemFontFamilies}}"
+                          SelectionChanged="LettertypeComboBox_SelectionChanged">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock FontFamily="{Binding}" Text="{Binding}" />
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </ToolBar>
+
+
+        </ToolBarTray>
+
+
         <StatusBar DockPanel.Dock="Bottom" Height="24">
-            <StatusBarItem Name="StatusVet" DockPanel.Dock="Right" Width="50"
-                           HorizontalContentAlignment="Right" Content="Vet"
-                           FontWeight="{Binding ElementName=TextBoxVoorbeeld,
-Path=FontWeight}">
+            <StatusBarItem Name="StatusVet" DockPanel.Dock="Right" Width="50" HorizontalContentAlignment="Right"
+                           Content="Vet" FontWeight="{Binding ElementName=TextBoxVoorbeeld, Path=FontWeight}">
             </StatusBarItem>
-            <StatusBarItem Name="StatusSchuin" DockPanel.Dock="Right" Width="50"
-                           HorizontalContentAlignment="Right" Content="Schuin"
-                           FontStyle="{Binding ElementName=TextBoxVoorbeeld, Path=FontStyle}">
+            <StatusBarItem Name="StatusSchuin" DockPanel.Dock="Right" Width="50" HorizontalContentAlignment="Right"
+                           Content="Schuin" FontStyle="{Binding ElementName=TextBoxVoorbeeld, Path=FontStyle}">
             </StatusBarItem>
             <StatusBarItem Name="StatusLettertype"
                            Content="{Binding ElementName=LettertypeComboBox, Path=SelectedValue}">
             </StatusBarItem>
         </StatusBar>
+
         <TextBox Name="TextBoxVoorbeeld" Text="Dit is voorbeeldtekst"
                  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                  FontSize="24" TextWrapping="Wrap" MaxWidth="600" MaxHeight="900"
                  FontFamily="{Binding ElementName=LettertypeComboBox,Path=SelectedValue}">
         </TextBox>
     </DockPanel>
+
+
+    <Window.CommandBindings>
+        <CommandBinding Command="Save" Executed="SaveExecuted"></CommandBinding>
+        <CommandBinding Command="Open" Executed="OpenExecuted"></CommandBinding>
+        <CommandBinding Command="Print" Executed="PrintExecuted"></CommandBinding>
+        <CommandBinding Command="PrintPreview" Executed="PreviewExecuted"></CommandBinding>
+        <CommandBinding Command="Close" Executed="CloseExecuted"></CommandBinding>
+
+    </Window.CommandBindings>
+
+
+
 </Window>
+
