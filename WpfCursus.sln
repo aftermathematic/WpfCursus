@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HobbyLijst", "HobbyLijst\Ho
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bars", "Bars\Bars.csproj", "{EE7008E9-43A4-4C8E-B4EE-0322DF6CE1F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KleurenKiezer", "KleurenKiezer\KleurenKiezer.csproj", "{F3D81210-C291-4103-8534-8CE085562CD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KleurenKiezer", "KleurenKiezer\KleurenKiezer.csproj", "{F3D81210-C291-4103-8534-8CE085562CD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBinding", "DataBinding\DataBinding.csproj", "{C2818C24-8C09-41AD-9925-03D85C485DE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{F3D81210-C291-4103-8534-8CE085562CD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3D81210-C291-4103-8534-8CE085562CD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3D81210-C291-4103-8534-8CE085562CD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2818C24-8C09-41AD-9925-03D85C485DE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2818C24-8C09-41AD-9925-03D85C485DE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2818C24-8C09-41AD-9925-03D85C485DE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2818C24-8C09-41AD-9925-03D85C485DE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
