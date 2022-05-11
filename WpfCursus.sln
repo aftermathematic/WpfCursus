@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegenboogDragDrop", "Regenb
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpleidingenDragDrop", "OpleidingenDragDrop\OpleidingenDragDrop.csproj", "{3234EF7B-DBD0-4A49-BF66-0D34DA3C487A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowMetRibbonControl", "WindowMetRibbonControl\WindowMetRibbonControl.csproj", "{A8EAD357-0CA8-445C-81BF-2D74F24B27D9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{3234EF7B-DBD0-4A49-BF66-0D34DA3C487A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3234EF7B-DBD0-4A49-BF66-0D34DA3C487A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3234EF7B-DBD0-4A49-BF66-0D34DA3C487A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8EAD357-0CA8-445C-81BF-2D74F24B27D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8EAD357-0CA8-445C-81BF-2D74F24B27D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8EAD357-0CA8-445C-81BF-2D74F24B27D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8EAD357-0CA8-445C-81BF-2D74F24B27D9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
