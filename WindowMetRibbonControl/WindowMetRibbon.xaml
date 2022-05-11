@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WindowMetRibbonControl"
         mc:Ignorable="d"
-        Height="350" Width="525" Icon="images\App48.png" Title="Window met Ribbon">
+        Height="350" Width="525" Icon="images\App48.png" Title="Window met Ribbon" Closing="Window_Closing">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="LogischNaarVisueel" />
@@ -21,6 +21,9 @@
         <CommandBinding Command="Close" Executed="CloseExecuted" />
         <CommandBinding Command="Print" Executed="PrintExecuted" />
         <CommandBinding Command="PrintPreview" Executed="PreviewExecuted" />
+
+        <CommandBinding Command="Undo" Executed="UndoExecuted" />
+        <CommandBinding Command="Redo" Executed="RedoExecuted" />
     </Window.CommandBindings>
 
     <DockPanel LastChildFill="True">
