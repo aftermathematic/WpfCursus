@@ -3,11 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WindowMetRibbonControl"
         mc:Ignorable="d"
         Height="350" Width="525" Icon="images\App48.png" Title="Window met Ribbon">
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="LogischNaarVisueel" />
+        <local:BooleanToFontWeight x:Key="LogischNaarFontDikte" />
+        <local:BooleanToFontStyle x:Key="LogischNaarFontStijl" />
     </Window.Resources>
 
     <Window.CommandBindings>
@@ -111,22 +114,17 @@
                                     Header="Redo" />
                 </RibbonGroup>
                 <RibbonGroup Header="Opmaak">
-                    <RibbonCheckBox SmallImageSource="images\bold.png" Label="Vet" />
-                    <RibbonCheckBox SmallImageSource="images\italic.png" Label="Schuin" />
-                    <RibbonCheckBox Name="CheckBoxAlleenLezen"
-                                    SmallImageSource="images\ReadOnly16.png" Label="Alleen lezen" />
+                    <RibbonCheckBox SmallImageSource="images\bold.png" Label="Vet" IsChecked="{Binding ElementName=ButtonVet, Path=IsChecked}" />
+                    <RibbonCheckBox SmallImageSource="images\italic.png" Label="Schuin"
+                                    IsChecked="{Binding ElementName=ButtonSchuin, Path=IsChecked}"></RibbonCheckBox>
+                    <RibbonCheckBox Name="CheckBoxAlleenLezen" SmallImageSource="images\ReadOnly16.png" Label="Alleen lezen" />
                 </RibbonGroup>
                 <RibbonGroup Header="Kleur">
-                    <RibbonMenuButton Name="MenuKleur" LargeImageSource="images\kleur64.png"
-                                      Label="Letterkleur">
-                        <RibbonRadioButton SmallImageSource="images\black48.png" Label="Zwart"
-                                           IsChecked="True" Tag="#FF000000" Click="Radio_Click" />
-                        <RibbonRadioButton SmallImageSource="images\red48.png" Label="Rood"
-                                           Tag="#FFFF0000" Click="Radio_Click" />
-                        <RibbonRadioButton SmallImageSource="images\blue48.png" Label="Blauw"
-                                           Tag="#FF0000FF" Click="Radio_Click" />
-                        <RibbonRadioButton SmallImageSource="images\green48.png" Label="Groen"
-                                           Tag="#FF00FF00" Click="Radio_Click" />
+                    <RibbonMenuButton Name="MenuKleur" LargeImageSource="images\kleur64.png" Label="Letterkleur">
+                        <RibbonRadioButton SmallImageSource="images\black48.png" Label="Zwart" IsChecked="True" Tag="#FF000000" Click="Radio_Click" />
+                        <RibbonRadioButton SmallImageSource="images\red48.png" Label="Rood" Tag="#FFFF0000" Click="Radio_Click" />
+                        <RibbonRadioButton SmallImageSource="images\blue48.png" Label="Blauw" Tag="#FF0000FF" Click="Radio_Click" />
+                        <RibbonRadioButton SmallImageSource="images\green48.png" Label="Groen" Tag="#FF00FF00" Click="Radio_Click" />
                     </RibbonMenuButton>
                 </RibbonGroup>
             </RibbonTab>
@@ -150,7 +148,11 @@
         <TextBox Name="TextBoxVoorbeeld" Text="Dit is voorbeeldtekst"
                  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                  FontSize="24" TextWrapping="Wrap" MaxWidth="600" MaxHeight="900"
-                 IsReadOnly="{Binding ElementName=CheckBoxAlleenLezen,Path=IsChecked}" />
+                 IsReadOnly="{Binding ElementName=CheckBoxAlleenLezen,Path=IsChecked}"
+                 FontWeight="{Binding ElementName=ButtonVet, Path=IsChecked, Converter={StaticResource LogischNaarFontDikte}}"
+                 FontStyle="{Binding ElementName=ButtonSchuin, Path=IsChecked, Converter={StaticResource LogischNaarFontStijl}}"
+                 
+                 />
 
     </DockPanel>
 </Window>
