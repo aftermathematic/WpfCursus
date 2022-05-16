@@ -17,11 +17,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KleurenKiezer", "KleurenKie
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataBinding", "DataBinding\DataBinding.csproj", "{C2818C24-8C09-41AD-9925-03D85C485DE3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegenboogDragDrop", "RegenboogDragDrop\RegenboogDragDrop.csproj", "{CD447A8E-B440-4540-AE06-A7429A169F2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegenboogDragDrop", "RegenboogDragDrop\RegenboogDragDrop.csproj", "{CD447A8E-B440-4540-AE06-A7429A169F2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpleidingenDragDrop", "OpleidingenDragDrop\OpleidingenDragDrop.csproj", "{3234EF7B-DBD0-4A49-BF66-0D34DA3C487A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpleidingenDragDrop", "OpleidingenDragDrop\OpleidingenDragDrop.csproj", "{3234EF7B-DBD0-4A49-BF66-0D34DA3C487A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowMetRibbonControl", "WindowMetRibbonControl\WindowMetRibbonControl.csproj", "{A8EAD357-0CA8-445C-81BF-2D74F24B27D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowMetRibbonControl", "WindowMetRibbonControl\WindowMetRibbonControl.csproj", "{A8EAD357-0CA8-445C-81BF-2D74F24B27D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMVoorbeeld", "MVVMVoorbeeld\MVVMVoorbeeld.csproj", "{21D59430-B1C1-4B3C-8235-91EC01C82D26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{A8EAD357-0CA8-445C-81BF-2D74F24B27D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8EAD357-0CA8-445C-81BF-2D74F24B27D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8EAD357-0CA8-445C-81BF-2D74F24B27D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21D59430-B1C1-4B3C-8235-91EC01C82D26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21D59430-B1C1-4B3C-8235-91EC01C82D26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21D59430-B1C1-4B3C-8235-91EC01C82D26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21D59430-B1C1-4B3C-8235-91EC01C82D26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
