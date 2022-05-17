@@ -23,9 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OpleidingenDragDrop", "Ople
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowMetRibbonControl", "WindowMetRibbonControl\WindowMetRibbonControl.csproj", "{A8EAD357-0CA8-445C-81BF-2D74F24B27D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMVoorbeeld", "MVVMVoorbeeld\MVVMVoorbeeld.csproj", "{21D59430-B1C1-4B3C-8235-91EC01C82D26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVVMVoorbeeld", "MVVMVoorbeeld\MVVMVoorbeeld.csproj", "{21D59430-B1C1-4B3C-8235-91EC01C82D26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVVMHobby", "MVVMHobby\MVVMHobby.csproj", "{10B0055D-AD8A-4883-B664-495E18C5B06E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVVMHobby", "MVVMHobby\MVVMHobby.csproj", "{10B0055D-AD8A-4883-B664-495E18C5B06E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVVMHobbyEF", "MVVMHobbyEF\MVVMHobbyEF.csproj", "{1253D319-6C94-47C4-936B-914BF5D28A6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{10B0055D-AD8A-4883-B664-495E18C5B06E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10B0055D-AD8A-4883-B664-495E18C5B06E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10B0055D-AD8A-4883-B664-495E18C5B06E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1253D319-6C94-47C4-936B-914BF5D28A6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1253D319-6C94-47C4-936B-914BF5D28A6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1253D319-6C94-47C4-936B-914BF5D28A6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1253D319-6C94-47C4-936B-914BF5D28A6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

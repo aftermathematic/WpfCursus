@@ -23,7 +23,7 @@ public class HobbyLijstVM : ObservableObject
         context.Database.EnsureCreated();
         if (context.Hobbies.Count() == 0)
         {
-            context.Hobbies.Add(new HobbyVM(new Hobby("sport", "voetbal",
+            context.Hobbies.Add(new HobbyVM(new Hobby("sport", "voetbal", 
                 Convert.ToBase64String(File.ReadAllBytes(@"Images/voetbal.jpg")))));
             context.Hobbies.Add(new HobbyVM(new Hobby("sport", "atletiek",
                 Convert.ToBase64String(File.ReadAllBytes(@"Images/atletiek.jpg")))));

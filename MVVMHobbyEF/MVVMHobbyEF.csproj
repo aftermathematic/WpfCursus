@@ -14,7 +14,6 @@
     <None Remove="Images\drum.jpg" />
     <None Remove="Images\gitaar.jpg" />
     <None Remove="Images\piano.jpg" />
-    <None Remove="Images\tennis.jpg" />
     <None Remove="Images\trompet.jpg" />
     <None Remove="Images\turnen.jpg" />
     <None Remove="Images\voetbal.jpg" />
@@ -35,6 +34,17 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Model\" />
+    <Folder Include="ViewModel\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Xaml.Behaviors">
+      <HintPath>..\..\..\..\.nuget\packages\microsoft.xaml.behaviors.wpf\1.1.39\lib\net5.0-windows7.0\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\atletiek.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -50,9 +60,6 @@
     <Resource Include="Images\piano.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\tennis.jpg">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Images\trompet.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
@@ -62,17 +69,6 @@
     <Resource Include="Images\voetbal.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="ViewModel\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Microsoft.Xaml.Behaviors">
-      <HintPath>..\..\..\..\.nuget\packages\microsoft.xaml.behaviors.wpf\1.1.39\lib\net5.0-windows7.0\Microsoft.Xaml.Behaviors.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>
